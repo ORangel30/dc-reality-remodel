@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, Variants } from "framer-motion"
 import { useState } from "react"
 import Navbar from "@/components/Navbar"
 
@@ -97,42 +97,59 @@ export default function PropertiesPage() {
       description: "Industrial chic loft with exposed brick, polished concrete floors, and artistic flair.",
     },
   ]
+// Filter only properties for sale
+const forSaleProperties = properties.filter((p) => p.status === "For Sale");
 
-  // Filter only properties for sale
-  const forSaleProperties = properties.filter((p) => p.status === "For Sale")
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
-  return (
-    <main className="relative min-h-screen font-sans text-[#3A2F1B] dark:text-[#F3EFE6] transition-colors duration-500 overflow-x-hidden">
-      {/* Background layers */}
-      <div className="absolute inset-0 marble-bg" />
-      <div className="absolute inset-0 marble-veil" />
-      <div className="absolute inset-0 pointer-events-none dark:bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.2),transparent)] transition-opacity duration-1000" />
+return (
+  <main className="relative min-h-screen font-sans text-[#3A2F1B] dark:text-[#F3EFE6] transition-colors duration-500 overflow-x-hidden">
+    {/* Background layers */}
+    <div className="absolute inset-0 marble-bg" />
+    <div className="absolute inset-0 marble-veil" />
+    <div className="absolute inset-0 pointer-events-none dark:bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.2),transparent)] transition-opacity duration-1000" />
 
-      <div className="relative z-10">
-        <Navbar />
+    <div className="relative z-10">
+      <Navbar />
 
-        <section className="pt-40 pb-32 px-6 xl:px-32 2xl:px-48">
-          <div className="max-w-5xl mx-auto">
-            <motion.div initial="hidden" animate="visible" variants={fadeUp} className="text-center mb-20">
-              <div className="inline-block mb-8">
-                <span className="text-sm font-medium tracking-[0.2em] uppercase text-[#BFA76A] opacity-80">
-                  Austin Real Estate
-                </span>
-              </div>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light mb-12 leading-[0.9] tracking-tight">
-                Featured
-                <br />
-                <span className="italic text-[#BFA76A]">Properties</span>
-              </h1>
-              <div className="max-w-2xl mx-auto">
-                <p className="text-lg md:text-xl text-[#4B3F2A] dark:text-[#E8E3D7] leading-relaxed font-light">
-                  Discover exceptional homes across Austin and surrounding areas, each offering unique character and
-                  premium amenities for discerning buyers.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+      <section className="pt-40 pb-32 px-6 xl:px-32 2xl:px-48">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="text-center mb-20"
+          >
+            <div className="inline-block mb-8">
+              <span className="text-sm font-medium tracking-[0.2em] uppercase text-[#BFA76A] opacity-80">
+                Austin Real Estate
+              </span>
+            </div>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light mb-12 leading-[0.9] tracking-tight">
+              Featured
+              <br />
+              <span className="italic text-[#BFA76A]">Properties</span>
+            </h1>
+            <div className="max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl text-[#4B3F2A] dark:text-[#E8E3D7] leading-relaxed font-light">
+                Discover exceptional homes across Austin and surrounding areas,
+                each offering unique character and premium amenities for
+                discerning buyers.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
         <section className="py-32 px-6 xl:px-32 2xl:px-48">
           <motion.div
