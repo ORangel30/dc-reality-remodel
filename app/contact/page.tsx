@@ -15,11 +15,12 @@ export default function ContactPage() {
     setError(null);
     setSent(false);
 
+    const data = new FormData(e.currentTarget);
     const formData = {
-      name: e.currentTarget.name.value,
-      email: e.currentTarget.email.value,
-      phone: e.currentTarget.phone.value,
-      message: e.currentTarget.message.value,
+      name: data.get("name") as string,
+      email: data.get("email") as string,
+      phone: data.get("phone") as string,
+      message: data.get("message") as string,
     };
 
     try {
@@ -249,19 +250,19 @@ export default function ContactPage() {
                   shadow-sm transition-colors duration-500
                 "
               >
-                <h3 className="text-base font-serif font-semibold">
-                  What to expect
-                </h3>
-                                <ul className="mt-3 space-y-2 text-sm text-[#4B3F2A] dark:text-[#E8E3D7]">
-                  <li>— A quick call to understand your scope and timeline</li>
-                  <li>— Curated options that match your aesthetic and budget</li>
-                  <li>— Transparent, itemized estimate</li>
-                </ul>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </div>
-    </main>
+               <h3 className="text-base font-serif font-semibold">
+  What to expect
+</h3>
+<ul className="mt-3 space-y-2 text-sm text-[#4B3F2A] dark:text-[#E8E3D7]">
+  <li>— A quick call to understand your scope and timeline</li>
+  <li>— Curated options that match your aesthetic and budget</li>
+  <li>— Transparent, itemized estimate</li>
+</ul>
+</div>
+</aside>
+</div>
+</div>
+</div>
+</main>
   );
 }
