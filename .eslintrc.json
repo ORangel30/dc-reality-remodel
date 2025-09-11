@@ -1,0 +1,13 @@
+﻿{
+  "extends": "next",
+  "plugins": [],
+  "rules": {
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "semi": ["warn", "always"],
+    "quotes": ["warn", "double", { "avoidEscape": true }],
+    "indent": ["warn", 2],
+    "no-console": "off"
+  }
+}
